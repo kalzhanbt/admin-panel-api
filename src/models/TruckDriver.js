@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const TruckDriverSchema = new mongoose.Schema({
+const { Schema } = mongoose; 
+
+const TruckDriverSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -17,9 +19,9 @@ const TruckDriverSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: function (v) {
-        return /\d{10,15}/.test(v);
+        return /^\+?[1-9]\d{1,14}$/.test(v);
       },
-      message: props => `${props.value} is not a valid phone number!`
+      message: props => `${props.value} is not a valid phone number! Must be in a valid format.`
     }
   },
   assignedTruckId: {

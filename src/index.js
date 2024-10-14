@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URL, {
 // Routes
 app.use('/api', userRoutes);
 app.use('/api/truck-drivers', truckDriverRoutes);
-app.use('/api/truck', truckRoutes);
+app.use('/api/trucks', truckRoutes);
 
 // Start the server
 app.listen(PORT, () => {

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const TruckDriver = require('../models/TruckDriver');
+const Truck = require('../models/Truck');
 
 router.post('/', async (req, res) => {
     try {
-        const driver = new TruckDriver(req.body);
+        const driver = new Truck(req.body);
         await driver.save();
         res.status(201).json(driver);
     } catch (err) {

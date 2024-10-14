@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/index');
 const truckDriverRoutes = require('./routes/truckDriver');
+const truckRoutes = require('./routes/truck');
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ mongoose.connect(process.env.MONGO_URL, {
 // Routes
 app.use('/api', userRoutes);
 app.use('/api/truck-drivers', truckDriverRoutes);
+app.use('/api/truck', truckRoutes);
 
 // Start the server
 app.listen(PORT, () => {

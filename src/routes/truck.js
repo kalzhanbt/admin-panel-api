@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const drivers = await TruckDriver.find();
+        const drivers = await Truck.find();
         res.json(drivers);
     } catch (err) {
         console.error(error);
@@ -24,8 +24,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const driver = await TruckDriver.findById(req.params.id);
-        if (!driver) return res.status(404).json({ message: 'Driver not found' });
+        const driver = await Truck.findById(req.params.id);
+        if (!driver) return res.status(404).json({ message: 'Truck not found' });
         res.json(driver);
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
@@ -34,8 +34,8 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const updatedDriver = await TruckDriver.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedDriver) return res.status(404).json({ message: 'Driver not found' });
+        const updatedDriver = await Truck.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedDriver) return res.status(404).json({ message: 'Truck not found' });
         res.json(updatedDriver);
     } catch (err) {
         res.status(400).json({ message: err.message });
@@ -44,8 +44,8 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const deletedDriver = await TruckDriver.findByIdAndDelete(req.params.id);
-        if (!deletedDriver) return res.status(404).json({ message: 'Driver not found' });
+        const deletedDriver = await Truck.findByIdAndDelete(req.params.id);
+        if (!deletedDriver) return res.status(404).json({ message: 'Truck not found' });
         res.json({ message: 'Driver deleted' });
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
